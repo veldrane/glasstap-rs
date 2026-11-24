@@ -8,6 +8,7 @@ pub use std::fmt::Display;
 pub use std::time::Duration;
 pub use std::backtrace::Backtrace;
 pub use std::panic;
+pub use std::net::SocketAddr;
 
 // Lock free atomic swap for loadbalancer target updates
 pub use arc_swap::ArcSwap;

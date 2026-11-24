@@ -4,13 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-arc-swap = "1.9.5"
-async-trait = "0.1.92"
-bytes = "1.12.2"
-hickory-resolver = "0.26.3"
-ipnet = "2.12.2"
-pingora = "0.9.1"
-pingora-load-balancing = "0.9.1"
-pingora-proxy = "0.9.1"
-tokio = "1.54.1"
-tokio-tracing = "0.0.0"
+anyhow = { workspace = true }
+pingora = { workspace = true }
+pingora-proxy = { workspace = true }
+pingora-load-balancing = { workspace = true }
+tokio = { workspace = true }
+arc-swap = { workspace = true }
+async-trait = { workspace = true }
+hickory-resolver = { workspace = true }
+ipnet = { workspace = true }
+bytes = { workspace = true }

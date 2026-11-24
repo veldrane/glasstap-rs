@@ -4,17 +4,17 @@ build:
 
 # Build static binary
 
-static:
+static: 	
 	cargo build --release --target=x86_64-unknown-linux-musl
 # Install to /usr/local/bin (can be overridden by PREFIX)
 PREFIX ?= /usr/local
 
 install: build
-	install -Dm755 target/release/dynamic-balancer $(PREFIX)/bin/dynamic-balancer
+	install -Dm755 target/release/glasstap $(PREFIX)/bin/glasstap
 
 # Install static binary to /usr/local/bin (can be overridden by PREFIX)
 install-static: static
-	install -Dm755 target/x86_64-unknown-linux-musl/release/dynamic-balancer $(PREFIX)/bin/dynamic-balancer
+	install -Dm755 target/x86_64-unknown-linux-musl/release/glasstap $(PREFIX)/bin/glasstap
 # Remove build artifacts
 clean:
 	cargo clean
@@ -24,7 +24,7 @@ test:
 	cargo test
 
 docker: static
-	podman build -t dynamic-balancer .
+	podman build -t glasstap:latest -f build/Dockerfile .
 
 # Display help
 help:
