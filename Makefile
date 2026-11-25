@@ -23,7 +23,7 @@ clean:
 test:
 	cargo test
 
-docker: static
+image: static
 	podman build -t glasstap:latest -f build/Dockerfile .
 
 # Display help

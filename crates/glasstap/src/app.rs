@@ -1,13 +1,14 @@
 use crate::prelude::*;
 use crate::config::Config;
 use tokio::sync::mpsc;
-use crate::collector::Message;
+// use crate::collector::Message;
+use crate::httpevents::HttpEvent;
 
 
 
 pub struct AppState {
     pub lb: Arc<ArcSwap<LoadBalancer<RoundRobin>>>,
-    pub tx: mpsc::Sender<Message>,
+    pub tx: mpsc::Sender<HttpEvent>,
 }
 
 
@@ -21,13 +22,13 @@ impl AppState {
             Err(_) => panic!("failed to build load balancer from upstreams"),
         };
 
-        let tx = mpsc::channel(100).0;
+        let tx: mpsc::Sender<HttpEvent> = mpsc::channel(100).0;
 
         AppState { lb: upstreams, tx }
         
     }
 
-    pub fn set_tx(&mut self, tx: mpsc::Sender<Message>) {
+    pub fn set_tx(&mut self, tx: mpsc::Sender<HttpEvent>) {
         self.tx = tx;
     }
 
